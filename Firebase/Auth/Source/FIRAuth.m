@@ -985,6 +985,9 @@ static NSMutableDictionary *gKeychainServiceNameForAppName;
   }
   if (user == _currentUser) {
     NSMutableDictionary *internalNotificationParameters = [NSMutableDictionary dictionary];
+    if (self.app) {
+      internalNotificationParameters[FIRAuthStateDidChangeInternalNotificationAppKey] = self.app;
+    }
     if (token.length) {
       internalNotificationParameters[FIRAuthStateDidChangeInternalNotificationTokenKey] = token;
     }
